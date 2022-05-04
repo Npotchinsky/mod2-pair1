@@ -30,10 +30,12 @@ WHERE open_from_mm = '01' AND open_to_mm = '12';
 SELECT name, description
 FROM park
 ORDER BY establish_date DESC;
+
 -- select name and description of all parks in Ohio
 SELECT name, description
 FROM park
 WHERE location = 'Ohio';
+
 -- select name and description of all parks NOT in Ohio
 SELECT name, description
 FROM park
@@ -42,9 +44,11 @@ WHERE location != 'Ohio';
 -- select the total number of visitors for all parks
 SELECT SUM(visitors)
 FROM park;
+
 -- select the average number of visitors for all parks
 SELECT AVG(visitors)
 FROM park;
+
 
 -- SITE TABLE
 -----------------------------------------------
@@ -60,6 +64,7 @@ SELECT COUNT(site_id)
 FROM site
 WHERE utilities;
 
+
 -- RESERVATION TABLE
 -----------------------------------------------
 
@@ -67,17 +72,21 @@ WHERE utilities;
 SELECT reservation_id, site_id, name, from_date, to_date
 FROM reservation
 WHERE from_date BETWEEN '05/01/22' AND '05/31/22';
+
 -- select all columns from reservation where name includes 'Reservation'
 SELECT reservation_id, site_id, name, from_date, to_date, create_date
 FROM reservation 
 WHERE name LIKE '%Reservation%';
+
 -- select the total number of reservations in the reservation table
 SELECT COUNT(reservation_id)
 FROM reservation;
+
 -- select reservation id, site id, name of the reservations where site id is in the list 9, 20, 24, 45, 46
 SELECT reservation_id, site_id, name 
 FROM reservation
 WHERE site_id IN (9,20,24,45,46);
+
 -- select the date and number of reservations for each date orderd by from_date in ascending order
 SELECT from_date, count(reservation_id)
 FROM reservation
